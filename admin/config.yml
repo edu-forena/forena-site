@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+locale: "ar"
+
+collections:
+  - name: "news"
+    label: "الأخبار"
+    label_singular: "خبر"
+    files:
+      - file: "content/news.json"
+        label: "قائمة الأخبار"
+        name: "news"
+        fields:
+          - label: "الأخبار"
+            name: "items"
+            widget: "list"
+            label_singular: "خبر"
+            summary: "{{title}}"
+            fields:
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "التاريخ", name: "date", widget: "date", required: false, format: "YYYY-MM-DD" }
+              - { label: "التفاصيل", name: "body", widget: "text" }
+              - { label: "رابط إضافي (اختياري)", name: "link", widget: "string", required: false }
+
+  - name: "opportunities"
+    label: "الفرص"
+    label_singular: "فرصة"
+    files:
+      - file: "content/opportunities.json"
+        label: "قائمة الفرص"
+        name: "opportunities"
+        fields:
+          - label: "الفرص"
+            name: "items"
+            widget: "list"
+            label_singular: "فرصة"
+            summary: "{{title}}"
+            fields:
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "آخر موعد للتقديم", name: "deadline", widget: "date", required: false, format: "YYYY-MM-DD" }
+              - { label: "التفاصيل", name: "body", widget: "text" }
+              - { label: "رابط التقديم (اختياري)", name: "link", widget: "string", required: false }
